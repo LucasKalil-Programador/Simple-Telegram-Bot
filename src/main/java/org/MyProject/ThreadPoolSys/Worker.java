@@ -9,9 +9,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 
  * @author Lucas Guimaraes Kalil
  * 
- * classe representa um trabalhado ou thread onde e possivel submeter tarefas
+ *         classe representa um trabalhado ou thread onde e possivel submeter
+ *         tarefas
  *
- *	@see Thread
+ * @see Thread
  */
 public class Worker extends Thread {
 
@@ -19,6 +20,13 @@ public class Worker extends Thread {
 	 * Contagem estatica da quantidade de threads
 	 */
 	private static AtomicInteger threadCounter = new AtomicInteger(0);
+
+	/**
+	 * Tempo que o thread ira esperar quando não tiver uma tarefa sendo execultada
+	 * <p>
+	 * Valores menores aumentam a performance porem gastam mais cpu
+	 */
+	private int threadWaitingTime_ms = 10;
 
 	private boolean active = true;
 	private Runnable task;
@@ -45,7 +53,7 @@ public class Worker extends Thread {
 				status = getName() + " Status: idle";
 				task = null;
 			} else {
-				delay(100, TimeUnit.MILLISECONDS);
+				delay(threadWaitingTime_ms, TimeUnit.MILLISECONDS);
 			}
 		}
 		status = getName() + " Status: off";
@@ -75,6 +83,22 @@ public class Worker extends Thread {
 	 */
 	public void shutdown() {
 		active = false;
+	}
+
+	/**
+	 * @return threadWaitingTime_ms
+	 * 
+	 * @see threadWaitingTime_ms
+	 */
+	public int getThreadWaitingTime_ms() {
+		return threadWaitingTime_ms;
+	}
+
+	/**
+	 * @see threadWaitingTime_ms
+	 */
+	public void setThreadWaitingTime_ms(int threadWaitingTime_ms) {
+		this.threadWaitingTime_ms = threadWaitingTime_ms;
 	}
 
 	/**
