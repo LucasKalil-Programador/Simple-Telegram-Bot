@@ -2,6 +2,7 @@ package org.MyProject.ThreadPoolSys;
 
 import java.util.concurrent.TimeUnit;
 
+// Class com metodos uteis para threads
 public final class ThreadUtils {
 	
 	/**
