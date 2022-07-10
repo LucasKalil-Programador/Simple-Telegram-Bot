@@ -5,6 +5,13 @@ import static org.MyProject.ThreadPoolSys.ThreadUtils.delay;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * 
+ * @author Lucas Guimaraes Kalil
+ * 
+ * classe representa um trabalhado ou thread onde e possivel submeter tarefas
+ *
+ */
 public class Worker extends Thread {
 
 	/**
