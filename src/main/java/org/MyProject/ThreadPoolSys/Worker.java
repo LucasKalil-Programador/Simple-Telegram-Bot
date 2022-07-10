@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 
  * classe representa um trabalhado ou thread onde e possivel submeter tarefas
  *
+ *	@see Thread
  */
 public class Worker extends Thread {
 
