@@ -35,7 +35,6 @@ public class Worker extends Thread {
 	public Worker() {
 		super("Worker: " + threadCounter.getAndIncrement());
 		status = getName() + " Status: idle";
-		start();
 	}
 
 	/**
@@ -71,11 +70,26 @@ public class Worker extends Thread {
 	 * 
 	 */
 	public boolean submitTask(Runnable task) {
+		if(!started) start();
 		if (this.task == null && active) {
 			this.task = task;
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * armazena se o thread foi iniciado ou não
+	 * 
+	 * @see start
+	 */
+	private boolean started = false;
+	
+	@Override
+	public synchronized void start() {
+		started = true;
+		super.start();
+		System.out.println("iniciado");
 	}
 
 	/**

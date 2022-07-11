@@ -3,6 +3,7 @@ package org.MyProject.TelegramBot;
 import java.util.List;
 
 import org.MyProject.ThreadPoolSys.BlockingThreadPool;
+import org.MyProject.ThreadPoolSys.Worker;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
@@ -22,12 +23,13 @@ public class Main {
 	private static int On_ReceiveMenssageUpdates(List<Update> updates) {
 		for (Update update : updates) {
 			threadPool.execute(() -> On_Menssage(update));
-		}
+		} 
 
 		return UpdatesListener.CONFIRMED_UPDATES_ALL;
 	}
 	
 	private static void On_Menssage(Update update) {
-		
+		System.out.print(((Worker)Thread.currentThread()).getStatus());
+		System.out.println(" | " + update.message().text() + Thread.activeCount());
 	}
 }
