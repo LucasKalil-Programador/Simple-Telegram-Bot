@@ -32,3 +32,6 @@
 <h2> Dificuldades a serem resolvidos </h2>
 <br>
 </div>
+
+
+a principal dificuldade se se criar um sistema desse e ele ser o mais customizado possível de for que a pessoa que ira utilizar, criar um Bot totalmente personalizado e customizado conforme as necessidades de cada um
