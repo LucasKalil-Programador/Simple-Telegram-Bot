@@ -34,7 +34,7 @@ public class Worker extends Thread {
 
 	public Worker() {
 		super("Worker: " + threadCounter.getAndIncrement());
-		status = getName() + " Status: idle";
+		status = getName() + " Status: started";
 	}
 
 	/**
@@ -45,6 +45,7 @@ public class Worker extends Thread {
 	@Override
 	public void run() {
 		setDefaultUncaughtExceptionHandler((t, e) -> e.printStackTrace());
+		status = getName() + " Status: idle";
 		while (active) {
 			if (task != null) {
 				status = getName() + " Status: working";
